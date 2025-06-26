@@ -21,7 +21,6 @@ const getAllProductsFromDB = () => __awaiter(void 0, void 0, void 0, function* (
 });
 const getSpecificProByIdFromDB = (productId) => __awaiter(void 0, void 0, void 0, function* () {
     const product = yield product_model_1.ProductModel.findById(productId);
-    console.log(product, "services");
     return product;
 });
 const updateProByIdIntoDB = (productId, updateInfo) => __awaiter(void 0, void 0, void 0, function* () {

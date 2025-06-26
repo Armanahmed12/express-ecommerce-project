@@ -112,7 +112,7 @@ const updateSpecificProByIdIntoDB = (req, res) => __awaiter(void 0, void 0, void
 // find and delete product from db by its ID
 const deleteProductById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield product_services_1.ProductServices.deleteProFromDB(req.params.productId);
+        yield product_services_1.ProductServices.deleteProFromDB(req.params.productId);
         res.status(200).json({
             success: true,
             message: "Product deleted successfully!",
@@ -127,16 +127,10 @@ const deleteProductById = (req, res) => __awaiter(void 0, void 0, void 0, functi
         });
     }
 });
-// find docs with textQuery
-const findProductsByQueryText = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const x = req.query;
-    console.log(x);
-});
 exports.ProductControllers = {
     createNewProduct,
     getAllProducts,
     getSpecificProById,
     updateSpecificProByIdIntoDB,
     deleteProductById,
-    findProductsByQueryText,
 };

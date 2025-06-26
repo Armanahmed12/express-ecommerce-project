@@ -14,7 +14,7 @@ app.use(express_1.default.json());
 app.use('/api/products', product_routes_1.default);
 app.use('/api/orders', order_routes_1.default);
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.send("Hello WORLD!");
 });
 // 404 handler (must be after all routes)
 app.use((req, res) => {
