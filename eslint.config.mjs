@@ -1,27 +1,31 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
+// eslint.config.js
+import js from "@eslint/js";
 import tseslint from "typescript-eslint";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import prettier from "eslint-config-prettier";
+import prettierPlugin from "eslint-plugin-prettier";
 
-/** @type {import('eslint').Linter.Config[]} */
 export default [
-  { files: ["**/*.{js,mjs,cjs,ts}"] },
-  { languageOptions: { globals: globals.browser } },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
   {
+    files: ["**/*.ts"],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        project: "./tsconfig.json",
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
+    },
+    plugins: {
+      prettier: prettierPlugin,
+    },
     rules: {
-      "no-unused-vars": "error",
-      "no-unused-expressions": "error",
-      "prefer-const": "error",
       "no-console": "warn",
-      "no-undef": "error",
+      "no-var": "error",
+      "no-unused-vars": "warn",
+      quotes: ["error", "double", { avoidEscape: true }],
     },
   },
-  {
-    ignores: [".node_modules/*"],
-  },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-
-  // Any other config imports go at the top
-  eslintPluginPrettierRecommended,
+  prettier,
 ];

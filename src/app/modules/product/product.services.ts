@@ -15,11 +15,10 @@ const getAllProductsFromDB = async () => {
 const getSpecificProByIdFromDB = async (productId: string) => {
     
     const product = await ProductModel.findById(productId);
-    console.log(product, "services")
     return product;
 }
 
-const updateProByIdIntoDB = async (productId:string, updateInfo: Object) => {
+const updateProByIdIntoDB = async (productId: string, updateInfo: object) => {
     
     const result = await ProductModel.findByIdAndUpdate(productId, updateInfo, {
       new: true, // returns the updated document

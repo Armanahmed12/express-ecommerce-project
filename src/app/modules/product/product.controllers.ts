@@ -122,7 +122,7 @@ const deleteProductById = async (req: Request, res: Response) => {
   
   try {
      
-    const result = await ProductServices.deleteProFromDB(req.params.productId);
+    await ProductServices.deleteProFromDB(req.params.productId);
     res.status(200).json({
         
       success: true,
@@ -139,18 +139,11 @@ const deleteProductById = async (req: Request, res: Response) => {
   }
 }
 
-// find docs with textQuery
-const findProductsByQueryText = async (req: Request, res: Response) => {
-  
-  const x = req.query;
-  console.log(x);
 
-}
 export const ProductControllers = {
   createNewProduct,
   getAllProducts,
   getSpecificProById,
   updateSpecificProByIdIntoDB,
   deleteProductById,
-  findProductsByQueryText,
 };
